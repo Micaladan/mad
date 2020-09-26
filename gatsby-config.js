@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Michael A Daniel`,
+    description: `Aspiring Web Developer`,
+    author: `Michael A. Daniel`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -25,6 +25,12 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: "0dsuws2w",
+        dataset: "production",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
