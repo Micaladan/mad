@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
@@ -33,9 +34,24 @@ const Layout = ({ children }) => {
           textDecoration: "none",
         }}
       >
-        <ul>
-          <li>Grocery List</li>
-          <li>Immortal</li>
+        <ul
+          style={{
+            display: "flex",
+            flexDirection: "horizontal",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/GroceryList/">Grocery List</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to="/Immortal/">Immortal</Link>
+          </li>
         </ul>
       </div>
 
