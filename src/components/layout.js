@@ -45,9 +45,9 @@ const Layout = ({ children }) => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/GroceryList/">Grocery List</Link>
-          </li>
+          </li> */}
           <li>
             {" "}
             <Link to="/Immortal/">Immortal</Link>

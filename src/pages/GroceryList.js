@@ -1,27 +1,58 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { graphql } from "gatsby"
+
+export const query = graphql`
+  {
+    allSanityProject {
+      edges {
+        node {
+          item
+          _id
+        }
+      }
+    }
+  }
+`
 
 const element = <FontAwesomeIcon icon={faTrash} />
 
-const GroceryListPage = () => {
+const GroceryListPage = ({ data }) => {
+  const buildTodos = () => {
+    let newArr = []
+    data.allSanityProject.edges.map(({ node: grocery }) =>
+      newArr.push(grocery.item)
+    )
+    updateTodos(newArr)
+  }
+
+  const [input, updateInput] = useState("")
+  const [todos, updateTodos] = useState([])
+  useEffect(() => {
+    buildTodos()
+  }, [])
   const handleDelete = event => {
     event.persist()
     updateTodos(todos.filter(x => event.target.id != x))
   }
-  const [input, updateInput] = useState("")
-  const [todos, updateTodos] = useState([])
   const onChangeHandler = event => {
     updateInput(event.target.value)
   }
   const onSubmitHandler = event => {
     event.preventDefault()
+    console.log(todos)
     if (!input) {
       return
     }
+
+    if (todos.find(x => (x = input))) {
+      alert("Already added that!")
+      return
+    }
+
     updateTodos([...todos, input])
     updateInput("")
   }
@@ -43,7 +74,7 @@ const GroceryListPage = () => {
           <div key={x}>
             <div>
               <span id={x} onClick={handleDelete} style={styles.trash}>
-                {element}
+                X
               </span>
               <h1 style={styles.items} key={x}>
                 {x}
@@ -52,7 +83,6 @@ const GroceryListPage = () => {
           </div>
         ))}
       </div>
-      <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }
@@ -89,6 +119,9 @@ const styles = {
     background: "#ff0000",
     color: "white",
     padding: "1rem",
+    cursor: "pointer",
+    position: "absolute",
+    outline: "none",
   },
 }
 export default GroceryListPage

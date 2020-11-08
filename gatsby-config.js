@@ -7,10 +7,10 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-sanity",
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        projectId: "k2lgj9a0",
+        dataset: "production",
       },
     },
     `gatsby-transformer-sharp`,
