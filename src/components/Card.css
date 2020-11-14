@@ -34,3 +34,9 @@ img {
   border-radius: 50%;
   flex: 1;
 }
+
+@media only screen and (max-width: 540px) {
+  .container {
+    width: 100%;
+  }
+}
