@@ -17,7 +17,7 @@ const ImmortalPeople = () => (
       <Card
         imgSrc="https://randomuser.me/api/portraits/men/1.jpg"
         name="Brad Neimyer"
-        description="Our tech guy who did not hear the ghost voices"
+        description="Our tech guy who did not hear the ghost voices, is he the bug?"
       ></Card>
       <Card
         imgSrc="https://randomuser.me/api/portraits/women/1.jpg"
